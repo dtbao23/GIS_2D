@@ -300,7 +300,8 @@ const decodePolyline = (encoded) => {
     return decoded.map(([longitude, latitude]) => [latitude, longitude]);
 };
 
-const api_key = ''
+// Lấy key: https://account.goong.io
+const api_key = "";
 // Hàm lấy danh sách tọa độ giữa hai điểm
 const getRouteCoordinates = async (origin, destination) => {
     const url = `https://rsapi.goong.io/Direction?origin=${origin}&destination=${destination}&vehicle=bike&api_key=${api_key}`;
@@ -308,8 +309,8 @@ const getRouteCoordinates = async (origin, destination) => {
     try {
         const response = await fetch(url);
         const data = await response.json();
-
-        if (data.routes.length > 0) {
+        console.log("data: ", data);
+        if (data.routes?.length > 0) {
             const encodedPolyline = data.routes[0].overview_polyline.points;
             const coordinates = decodePolyline(encodedPolyline);
             return coordinates;
@@ -338,92 +339,74 @@ const lines = [
     },
     {
         type: "polyline",
-        paths: await getRouteCoordinates(
-            "10.756746717025583,106.68590781484201",
-            "10.764088633214481,106.68492845261095"
-        ),
+        paths: geo.lines.NguyenTrai_BenNghe,
         symbol: {
             type: "simple-line",
             color: lineColor, // orange
             width: 5,
         },
         Name: "PGD Nguyễn Trãi - PGD Bến Nghé",
-        Location: "PGD Nguyễn Trãi - PGD Bến Nghé",
+        Location: "Tuyến đường PGD Nguyễn Trãi - PGD Bến Nghé",
         popupTemplate: pointPopupTemplate,
     },
     {
         type: "polyline",
-        paths: await getRouteCoordinates(
-            "10.771647091980716,106.69310768667732",
-            "10.792699370985993,106.6537834231669"
-        ),
+        paths: geo.lines.CMT8,
         symbol: {
             type: "simple-line",
             color: lineColor, // orange
             width: 5,
         },
-        Name: "Đường Cách Mạng Tháng Tám",
-        Location: "Đường Cách Mạng Tháng Tám",
+        Name: "Cách Mạng Tháng Tám",
+        Location: "Tuyến đường Đường Cách Mạng Tháng Tám",
         popupTemplate: pointPopupTemplate,
     },
     {
         type: "polyline",
-        paths: await getRouteCoordinates(
-            "10.77102184932846,106.70639515118363",
-            "10.785255308427223,106.70312541541139"
-        ),
+        paths: geo.lines.TonDucThang,
         symbol: {
             type: "simple-line",
             color: lineColor, // orange
             width: 5,
         },
-        Name: "Đường Tôn Đức Thắng",
-        Location: "Đường Tôn Đức Thắng",
+        Name: "Tôn Đức Thắng",
+        Location: "Tuyến đường Tôn Đức Thắng",
         popupTemplate: pointPopupTemplate,
     },
     {
         type: "polyline",
-        paths: await getRouteCoordinates(
-            "10.790477328288018,106.68294550099827",
-            "10.768234676417006,106.70234101492852"
-        ),
+        paths: geo.lines.NamKiKhoiNghia,
         symbol: {
             type: "simple-line",
             color: lineColor, // orange
             width: 5,
         },
-        Name: "Đường Nam Kì Khởi Nghĩa",
-        Location: "Đường Nam Kì Khởi Nghĩa",
+        Name: "Nam Kì Khởi Nghĩa",
+        Location: "Tuyến đường Nam Kì Khởi Nghĩa",
         popupTemplate: pointPopupTemplate,
     },
     {
         type: "polyline",
-        paths: await getRouteCoordinates(
-            "10.792219602477548,106.69401303330429",
-            "10.785698336583538,106.69796524065582"
-        ),
+        paths: geo.lines.TranQuangKhai_MacDinhChi,
         symbol: {
             type: "simple-line",
             color: lineColor, // orange
             width: 5,
         },
         Name: "PGD Trần Quang Khải - PGD Mạc Đĩnh Chi",
-        Location: "PGD Trần Quang Khải - PGD Mạc Đĩnh Chi",
+        Location: "Tuyến đường PGD Trần Quang Khải - PGD Mạc Đĩnh Chi",
         popupTemplate: pointPopupTemplate,
     },
     {
         type: "polyline",
-        paths: await getRouteCoordinates(
-            "10.774179795373461,106.70376627721141",
-            "10.767428418306169,106.69400672878609"
-        ),
+        paths: geo.lines.NguyenHue_BuiVien,
         symbol: {
             type: "simple-line",
             color: lineColor, // orange
             width: 5,
         },
         Name: "Phố đi bộ Nguyễn Huệ - Phố Tây Bùi Viên",
-        Location: "Phố đi bộ Nguyễn Huệ - Phố Tây Bùi Viên",
+        Location: "Tuyến đường Phố đi bộ Nguyễn Huệ - Phố Tây Bùi Viên",
         popupTemplate: pointPopupTemplate,
     },
 ];
@@ -438,8 +421,8 @@ require([
     // Add Icon to map
     const bankIcon = new PictureMarkerSymbol({
         url: "./assets/icon-vcb.png", // URL to your icon image
-        width: "80px",
-        height: "80px",
+        width: "20px",
+        height: "20px",
     });
 
     const iconGraphic = function (data) {
