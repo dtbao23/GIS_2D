@@ -301,7 +301,7 @@ const decodePolyline = (encoded) => {
 };
 
 // Lấy key: https://account.goong.io
-const api_key = "gTtOygyPl9y68qA3fwhtpK2g0Vkbggy7uqrvm0h8";
+const api_key = "";
 // Hàm lấy danh sách tọa độ giữa hai điểm
 const getRouteCoordinates = async (origin, destination) => {
     const url = `https://rsapi.goong.io/Direction?origin=${origin}&destination=${destination}&vehicle=bike&api_key=${api_key}`;
