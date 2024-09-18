@@ -301,7 +301,7 @@ const decodePolyline = (encoded) => {
 };
 
 // Lấy key: https://account.goong.io
-const api_key = "";
+const api_key = "gTtOygyPl9y68qA3fwhtpK2g0Vkbggy7uqrvm0h8";
 // Hàm lấy danh sách tọa độ giữa hai điểm
 const getRouteCoordinates = async (origin, destination) => {
     const url = `https://rsapi.goong.io/Direction?origin=${origin}&destination=${destination}&vehicle=bike&api_key=${api_key}`;
@@ -323,6 +323,9 @@ const getRouteCoordinates = async (origin, destination) => {
         return [];
     }
 };
+
+// const getPoints = await getRouteCoordinates('10.765773835106776,106.68204860391458', '10.7544431866413,106.6872787252529');
+// console.log(JSON.stringify(getPoints));
 
 const lines = [
     {
@@ -351,14 +354,14 @@ const lines = [
     },
     {
         type: "polyline",
-        paths: geo.lines.CMT8,
+        paths: geo.lines.PGDQuan1_PGDVoVanKiet,
         symbol: {
             type: "simple-line",
             color: lineColor, // orange
             width: 5,
         },
-        Name: "Cách Mạng Tháng Tám",
-        Location: "Tuyến đường Đường Cách Mạng Tháng Tám",
+        Name: "PGD Quận 1 - PGD Võ Văn Kiệt",
+        Location: "Tuyến đường PGD Quận 1 - PGD Võ Văn Kiệt",
         popupTemplate: pointPopupTemplate,
     },
     {
@@ -375,14 +378,14 @@ const lines = [
     },
     {
         type: "polyline",
-        paths: geo.lines.NamKiKhoiNghia,
+        paths: geo.lines.PGDNTMK_PGDND,
         symbol: {
             type: "simple-line",
             color: lineColor, // orange
             width: 5,
         },
-        Name: "Nam Kì Khởi Nghĩa",
-        Location: "Tuyến đường Nam Kì Khởi Nghĩa",
+        Name: "PGD Nguyễn Thị Minh Khai - PGD Vinhomes BaSon",
+        Location: "Tuyến đường PGD Nguyễn Thị Minh Khai - PGD Vinhomes BaSon",
         popupTemplate: pointPopupTemplate,
     },
     {
@@ -405,10 +408,22 @@ const lines = [
             color: lineColor, // orange
             width: 5,
         },
-        Name: "Phố đi bộ Nguyễn Huệ - Phố Tây Bùi Viên",
+        Name: "Phố đi bộ Nguyễn Huệ - Phố Tây Bùi Viện",
         Location: "Tuyến đường Phố đi bộ Nguyễn Huệ - Phố Tây Bùi Viên",
         popupTemplate: pointPopupTemplate,
     },
+    {
+      type: "polyline",
+      paths: geo.lines.VoVanKiet,
+      symbol: {
+          type: "simple-line",
+          color: [165,42,42], // orange
+          width: 8,
+      },
+      Name: "Võ Văn Kiệt",
+      Location: "Tuyến đường Võ Văn Kiệt - Đại lộ Đông Tây",
+      popupTemplate: pointPopupTemplate,
+  },
 ];
 
 require([
